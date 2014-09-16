@@ -1,0 +1,64 @@
+import "System"
+import "System.Windows.Forms"
+
+var a : int = 1;
+
+func repeat(a:int, b : string) {
+	while a > 0 {
+		Console.WriteLine(b);
+		a = a - 1
+	}
+	return
+}
+
+repeat(10, "hello world");
+MessageBox.Show("ÄãºÃ", "Message");
+
+//Console.Clear();
+//Console.Beep();
+
+
+
+
+//foo(1, "ss");
+//var a = 12;
+
+
+//main(1);
+//for x=0 to 10 do 
+//	print "hello world" 
+//end
+//
+//while true do
+//	print "ËÀÑ­»·"
+//end
+
+// var i : int = 10 + x * 2
+// //io.println i
+
+// i = 10
+
+// while i > 0 {
+	// //print i
+	// i = i - 1
+// }
+
+//if i {
+//	print "true"
+//	if false {
+//		print "true-false";
+//		print "aaa"
+//	} else {
+//	print "bbb";
+//		print "true-true"
+//		print "ccc"
+//	}
+//}  else { 
+//	print x
+//}
+
+
+
+
+
+

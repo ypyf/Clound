@@ -1,0 +1,57 @@
+(* 程序 *)
+program := stmt
+
+(* 语句 *)
+stmt := <empty> | <import> | <print> | <simple> | <if> | <while> | <for> | <declare> | <return> | <function> | <sequence>
+
+(* 导入C#库 *)
+import :=  "import" STRING [ "{" <ident> { "," <ident> } "}" ]
+
+return := "return" [ <expr> ]
+
+print := "print" <expr>
+
+block := "{" [ <stmt> ] { (EOL | ";") [stmt] } "}"
+if := "if" <expr> <block> [ "else" <block> ]
+while := "while" <expr> <block>
+for := "for" <ident> "=" <expr> "to" <expr> "do" <stmt> "end"
+
+(* 变量声明语句 *)
+(* 赋值也是一种声明：如 a = 1 *)
+type_spec := <ident>
+declare := "var" <ident> ":" <type_spec>
+         | "var" <ident> [ ":" <type_spec> ] "=" <expr>
+
+sequence := <stmt> (<EOL> | ";") <stmt>
+
+(* 实参表 *)
+args := <expr> { "," <expr> }
+postfix := "." IDENTIFIER | "(" [ <args> ] ")"
+
+(* 表达式 *)
+expr := <factor> | <factor> <op> <factor>
+factor := "-" <primary> | <primary>
+primary := ( "(" <expr> ")" | INT | STRING | BOOL | IDENTIFIER ) { <postfix> }
+
+(* 表达式语句 *)
+simple := <expr> [ <args> ]
+
+
+(* 函数声明 *)
+function := "func" <ident> "(" <param_list> ")" [ ":" <type_spec> ] <block>
+param_list :=  [ <params> ] 
+params := <param> { "," <param> }
+param := <ident> ":" <type_spec>
+
+// 得到程序集和类型的方法
+
+// "I know String is in the same assembly as Int32..."
+Type stringType = typeof(int).Assembly.GetType("System.String");
+
+// "It's in the current assembly"
+Type myType = Type.GetType("MyNamespace.MyType");
+
+// "It's in System.Windows.Forms.dll..."
+Type formType = Type.GetType ("System.Windows.Forms.Form, " + 
+    "System.Windows.Forms, Version=2.0.0.0, Culture=neutral, " + 
+    "PublicKeyToken=b77a5c561934e089");

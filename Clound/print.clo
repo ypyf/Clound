@@ -1,0 +1,12 @@
+//cls
+var str
+var n
+input "输入字符串: ", str
+input "输入重复次数: ", n
+var x=0
+for x=0 to n do
+   print str
+end
+
+
+
