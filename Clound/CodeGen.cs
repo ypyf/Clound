@@ -429,18 +429,18 @@ namespace Clound
                         case ">":
                             il.Emit(OpCodes.Cgt);
                             break;
-                        case "<=":
-                            il.Emit(OpCodes.Cgt);   // FIXME
-                            break;
-                        case ">=":
-                            il.Emit(OpCodes.Clt);   // FIXME
-                            break;
                         case "==":
                             il.Emit(OpCodes.Ceq);
                             break;
+                        case "<=":
+                            //il.Emit(OpCodes.Cgt);   // FIXME
+                            //break;
+                        case ">=":
+                            //il.Emit(OpCodes.Clt);   // FIXME
+                            //break;
                         case "!=":
-                            il.Emit(OpCodes.Ceq);   // FIXME
-                            break;
+                            //il.Emit(OpCodes.Ceq);   // FIXME
+                            //break;
                         default:
                             throw new Exception("Unrecognized operator: " + be.Op);
                     }
